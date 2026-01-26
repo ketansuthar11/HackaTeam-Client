@@ -2,6 +2,12 @@ import React from 'react'
 import profile from "../../images/profile.png"
 function TeammatesCard({name,score,role,skills}) {
     const styleList = 'rounded-lg border border-gray-400 px-3'
+    const getBarColor = (score) => {
+        if (score <= 40) return "bg-red-500";
+        if (score <= 70) return "bg-orange-500";
+        return "bg-green-500";
+    };
+
     return (
         <div className='rounded-lg p-6 shadow-md bg-white w-70 hover:scale-105 transition-transform'>
                 <div>
@@ -14,7 +20,7 @@ function TeammatesCard({name,score,role,skills}) {
                         </div>
                     </div>
                     <div className='flex items-center justify-start' >
-                        <p className='p-1 bg-red-500 rounded-lg text-sm text-white'>{score}%</p>
+                        <p className={`p-1 ${getBarColor(score)} rounded-lg text-sm text-white`}>{score}%</p>
                     </div>
                 </div>
                 <div className='mt-4 flex item-center'>
@@ -27,7 +33,7 @@ function TeammatesCard({name,score,role,skills}) {
                     </ul>
                 </div>
                 <div className='h-2 bg-gray-300 overflow-hidden mt-4 rounded-full'>
-                    <div className='h-full bg-gradient-to-r from-red-500 via-orange-500 to-green-500 h-2 rounded-lg' style={{width:45}}></div>
+                    <div className={`h-full ${getBarColor(score)} transition-all duration-200 h-2 rounded-lg`} style={{width:`${score}%`}}></div>
                 </div>
                 </div>
         </div>

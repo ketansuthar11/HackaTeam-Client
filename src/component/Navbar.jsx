@@ -11,7 +11,7 @@ function Navbar() {
     const {open,setOpen} = useState(false);
 
     return (
-        <nav className={'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md'}>
+        <nav className='fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md'>
             {loading ? (null) :
             (<div className='max-w-7xl mx-auto px-6 py-4 flex items-center justify-between'>
 
@@ -23,7 +23,7 @@ function Navbar() {
                 </div>
 
                 <div className={`flex-1 mx-0 my-auto ${!user && "flex justify-center"}`}>
-                    {!user ? (<ul className='hidden md:flex items-center gap-15'>
+                    {!user ? (<ul className='hidden lg:flex items-center gap-15'>
                         <li>
                             <button
                                 onClick={() =>
