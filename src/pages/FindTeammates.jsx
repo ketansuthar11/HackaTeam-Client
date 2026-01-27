@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import TeammatesCard from '../component/Cards/TeammatesCard'
 import { getTeams } from '../services/profile.api'
+import Loading from '../component/Loading';
 function FindTeammates() {
     const [teams, setTeams] = useState([]);
     const [teamsLoading, setTeamsLoading] = useState(false);
@@ -31,27 +32,26 @@ function FindTeammates() {
 
     return (
         <div className=" bg-gray-100 min-h-screen pt-10">
-            <div className='ml-8 mt-14'>
-                <h1 className='pl-6 text-xl'>{teams.length} Teammates Found</h1>
-                <div className="max-w-7xl mx-auto px-6 mt-8">
-                    <div
-                        className="
-                            grid
-                            gap-6
-                            [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]
-                        "
-                    >
-                        {
-                            teams.map((team,key)=>{
-                                return(
-                                    <TeammatesCard key={key} name={team.name} score={team.matchScore} role={team.role} skills={team.skills}/>
-                                )
-                            })
-                        }
-                        
+            {teamsLoading ? (
+                    <div className="flex items-center justify-center min-h-screen">
+                        <Loading />
                     </div>
-                </div>
-            </div>
+                ):(
+            <div className='pt-10 md:ml-8 mt-6'>
+                        <h1 className='pl-6 text-xl'>{teams.length} Teammates Found</h1>
+                        <div className="max-w-screen md:max-w-7xl mx-auto px-6 mt-8">
+                            <div className="flex gap-4 flex-wrap justify-start">
+                                {
+                                    teams.map((team, key) => {
+                                        return (
+                                            <TeammatesCard key={key} name={team.name} score={team.matchScore} role={team.role} skills={team.skills} />
+                                        )
+                                    })
+                                }
+
+                            </div>
+                        </div>
+            </div>)}
         </div>
 
     )

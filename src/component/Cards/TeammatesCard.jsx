@@ -9,13 +9,13 @@ function TeammatesCard({name,score,role,skills}) {
     };
 
     return (
-        <div className='rounded-lg p-6 shadow-md bg-white w-70 hover:scale-105 transition-transform'>
+        <div className='rounded-lg p-6 shadow-md bg-white w-full md:w-70 hover:scale-102 transition-transform duration-200'>
                 <div>
                     <div className='flex items-start justify-between '>
                     <div className='flex items-center justify-between gap-2'>
                         <div ><img src={profile} className="w-12 h-12 rounded-full object-cover border-2 border-blue-500" alt="Profile picture" /></div>
                         <div>
-                            <h1>{name}</h1>
+                            <h1 className='font-semibold'>{name}</h1>
                             <p className='text-gray-400 text-sm'>{role}</p>
                         </div>
                     </div>

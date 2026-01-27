@@ -4,18 +4,20 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
 import { IoMdSearch } from "react-icons/io";
 import { MdOutlineNotifications } from "react-icons/md";
-
-function Navbar() {
+import { MdOutlineMenu } from "react-icons/md";
+import Loading from './Loading';
+function Navbar({setIsSidebarOpen}) {
     const navigate = useNavigate();
     const { user, loading } = useAuth();
-    const {open,setOpen} = useState(false);
+    const [open,setOpen] = useState(false);
 
     return (
-        <nav className='fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md'>
-            {loading ? (null) :
-            (<div className='max-w-7xl mx-auto px-6 py-4 flex items-center justify-between'>
+        <nav className='fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md '>
+            {loading ? <Loading/> :
+            (<div className='max-w mx-auto px-6 py-4 flex items-center justify-between'>
 
                 <div className='flex items-center gap-2'>
+                    <MdOutlineMenu size={20} className='md:hidden' onClick={() => setIsSidebarOpen(prev => !prev)} />
                     <div className='font-bold text-lg text-blue-900'>Hackathon</div>
                     <span className='font-semibold text-lg text-purple-500'>
                         Partner Finder
@@ -98,7 +100,7 @@ function Navbar() {
                         </button>
                     </div>):
                     (
-                        <div className='flex items-center gap-8'>
+                    <div className='flex items-center gap-8'>
                         <button className='text-gray-700 mr-4 font-bold hover:text-purple-600 transition' onClick={() => navigate('/notifications')}>
                             <MdOutlineNotifications size={25} />
                         </button>
@@ -108,7 +110,6 @@ function Navbar() {
                             </button>
                             {
                                 open && (<div className='absolute left-0'>
-                                <p>Hello</p>
                             </div>)
                             }
                         </div>
