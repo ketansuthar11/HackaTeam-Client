@@ -5,9 +5,7 @@ import MyProfile from './MyProfile'
 function MyTeams() {
   return (
     <div className=''>
-      <h1>Hello</h1>
-      {/* <Loading/> */}
-      <MyProfile/>
+      <Loading/>
     </div>
   )
 }

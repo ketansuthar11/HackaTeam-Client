@@ -8,6 +8,7 @@ import ProfileSetup from './pages/ProfileSetup'
 import { useAuth } from './context/AuthContext'
 import FindTeammates from './pages/FindTeammates'
 import MyTeams from './pages/MyTeams'
+import MyProfile from './pages/MyProfile'
 
 const PublicRoute = ({ children }) => {
     const { user } = useAuth();
@@ -48,7 +49,8 @@ function AppRoutes() {
                 <Route path="find-teammates" element={<FindTeammates/>} />
                 <Route path="my-team" element={<MyTeams/>} />
                 <Route path="messages" element={<div>Messages</div>} />
-                <Route path="profile" element={<ProfileSetup />} />
+                <Route path="profile" element={<MyProfile />} />
+                <Route path="profile/profile-setup" element={<ProfileSetup />} />
             </Route>
         </Routes>
     )
